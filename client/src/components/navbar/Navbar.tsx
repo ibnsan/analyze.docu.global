@@ -1,31 +1,21 @@
-import { Navbar, Image, Switch, useTheme } from '@nextui-org/react';
-import { useTheme as useNextTheme } from 'next-themes';
+import { FC } from 'react';
+import { Navbar } from '@nextui-org/react';
+import NavbarBrand from './NavbarBrand';
+import NavbarLinks from './NavbarLinks';
+import ThemeSwitcher from './ThemeSwitcher';
 
-export default function NavbarApp() {
-  const { setTheme } = useNextTheme();
-  const { isDark } = useTheme();
+const NavbarApp: FC = () => (
+  <Navbar isBordered variant='floating'>
+    <Navbar.Brand>
+      <NavbarBrand />
+    </Navbar.Brand>
+    <NavbarLinks />
+    <Navbar.Content>
+      <Navbar.Item>
+        <ThemeSwitcher />
+      </Navbar.Item>
+    </Navbar.Content>
+  </Navbar>
+);
 
-  return (
-    <Navbar isBordered variant='floating'>
-      <Navbar.Brand>
-        <Image
-          src={isDark ? '/docu_logo_md.png' : '/docu_logo_md_dk.png'}
-          width={150}
-          alt={'Docu logotype'}
-        />
-      </Navbar.Brand>
-      <Navbar.Content hideIn='xs' variant='highlight-rounded'>
-        <Navbar.Link isActive href='/'>Home</Navbar.Link>
-        <Navbar.Link href='#'>Contact</Navbar.Link>
-      </Navbar.Content>
-      <Navbar.Content>
-        <Navbar.Item>
-          <Switch
-            checked={isDark}
-            onChange={(e) => setTheme(e.target.checked ? 'dark' : 'light')}
-          />
-        </Navbar.Item>
-      </Navbar.Content>
-    </Navbar>
-  );
-}
+export default NavbarApp;
