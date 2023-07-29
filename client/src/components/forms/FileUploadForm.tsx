@@ -41,7 +41,7 @@ const FileUploadForm: FC<FileUploadFormProps> = ({ setResponse, setError }) => {
 
     setLoading(true);
     try {
-      const result = await fetch('http://127.0.0.1:5000/analyze', {
+      const result = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/analyze`, {
         method: 'POST',
         body: formData,
       });
