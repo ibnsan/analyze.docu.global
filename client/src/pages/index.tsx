@@ -1,17 +1,9 @@
-import { useState } from 'react';
 import Head from 'next/head';
-import { Text, Container, Spacer } from '@nextui-org/react';
-import FileUploadForm from '../components/forms/FileUploadForm';
-import ResponseCard from '../components/ui/ResponseCard';
-import ErrorCard from '../components/ui/ErrorCard';
+import { NextPageWithLayout } from '@/pages/_app';
+import { ReactElement } from 'react';
+import DefaultLayout from '@/components/layouts/default';
 
-interface IResponse {
-  answer: string;
-}
-
-export default function Home() {
-  const [response, setResponse] = useState<IResponse | null>(null);
-  const [error, setError] = useState<string>('');
+const Page: NextPageWithLayout = () => {
 
   return (
     <>
@@ -23,24 +15,18 @@ export default function Home() {
       </Head>
 
       <main>
-        <Container>
-          <Text h2>Upload your PDF and ask a question</Text>
-          <FileUploadForm setResponse={setResponse} setError={setError} />
-          {error && (
-            <>
-              <Spacer y={1} />
-              <ErrorCard error={error} />
-            </>
-          )}
-          {response && (
-            <>
-              <Spacer y={1} />
-              <Text h3>Answer:</Text>
-              <ResponseCard response={response} />
-            </>
-          )}
-        </Container>
+        <div>
+          <h2>First test page</h2>
+        </div>
       </main>
     </>
   );
 }
+
+Page.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <DefaultLayout>{page}</DefaultLayout>
+  )
+}
+
+export default Page
