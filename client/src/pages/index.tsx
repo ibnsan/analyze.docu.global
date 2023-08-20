@@ -2,6 +2,10 @@ import Head from 'next/head';
 import { NextPageWithLayout } from '@/pages/_app';
 import { ReactElement } from 'react';
 import DefaultLayout from '@/components/layouts/default';
+import cx from '@/utils/cx';
+import Button from '@/components/ui/Button';
+import ChevronLeftSvg from "@/assets/icons/chevron-left.svg"
+
 
 const Page: NextPageWithLayout = () => {
 
@@ -16,7 +20,14 @@ const Page: NextPageWithLayout = () => {
 
       <main>
         <div>
+          
           <h2>First test page</h2>
+
+          <Button>
+            <ChevronLeftSvg className={cx('w-5 h-5')} />
+            Button
+          </Button>
+
         </div>
       </main>
     </>
