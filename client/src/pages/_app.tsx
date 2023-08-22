@@ -1,31 +1,19 @@
 import '@/styles/globals.css';
-import type { AppProps } from 'next/app';
-import { createTheme, NextUIProvider } from '@nextui-org/react';
-import { ThemeProvider as NextThemesProvider } from 'next-themes';
-import NavbarApp from '@/components/navbar/Navbar';
+import type { ReactElement, ReactNode } from 'react'
+import type { NextPage } from 'next'
+import type { AppProps } from 'next/app'
 
-export default function App({ Component, pageProps }: AppProps) {
-  const lightTheme = createTheme({
-    type: 'light',
-    theme: {},
-  });
-
-  const darkTheme = createTheme({
-    type: 'dark',
-    theme: {},
-  });
-
-  return (
-    <NextThemesProvider
-      defaultTheme='system'
-      attribute='class'
-      value={{
-        light: lightTheme.className,
-        dark: darkTheme.className,
-      }}>
-      <NextUIProvider>
-        <NavbarApp />
-        <Component {...pageProps} />
-      </NextUIProvider>
-    </NextThemesProvider>);
+export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+  getLayout?: (page: ReactElement) => ReactNode
+}
+ 
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout
+}
+ 
+export default function App({ Component, pageProps }: AppPropsWithLayout) {
+  // Use the layout defined at the page level, if available
+  const getLayout = Component.getLayout ?? ((page) => page)
+ 
+  return getLayout(<Component {...pageProps} />)
 }
