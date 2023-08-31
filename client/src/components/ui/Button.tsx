@@ -22,12 +22,12 @@ const buttonStyles = {
     ),
     variants: {
         default: "bg-aquahaze text-shark hover:bg-solitude active:bg-orient focus:bg-bg-aquahaze",
-        dark: "",
-        secondary: "",
-        outline: "",
-        outlineDark: "",
-        tertiary: "",
-        tertiaryDark: ""
+        dark: "bg-orient text-shark hover:bg-bluewhale hover:text-white active:bg-bluewhale active:text-white focus:bg-bg-bluewhale",
+        secondary: "bg-white text-shark hover:bg-aquahaze hover:text-shark active:bg-aquahaze active:text-white focus:bg-#EBF2F5 bg-#0A5479",
+        outline: "bg-mercury text-shark hover:bg-orient active:bg-orient active:text-white focus:bg-bg-orient",
+        outlineDark: "bg-orient text-shark hover:bg-mercury active:bg-orient active:text-white focus:bg-bg-orient",
+        tertiary: "w-[140px] h-[20px] text-shark hover:bg- active:bg- active:text- focus:bg-bg-orient",
+        tertiaryDark: "bg- text- hover:bg- active:bg- active:text- focus:bg-bg-"
     },
     defaultVariant: "default" as ButtonStyles
 };
