@@ -23,7 +23,7 @@ const Page: NextPageWithLayout = () => {
           
           <h2>First test page</h2>
 
-          <Button buttonStyle='tertiary'>
+          <Button>
             <ChevronLeftSvg className={cx('w-5 h-5')} />
             Button
           </Button>

@@ -5,7 +5,7 @@ import React, { ButtonHTMLAttributes } from "react";
 import cx from "@/utils/cx";
 
 // Types for different button styles
-type ButtonStyles = "default" | "dark" | "secondary" | "outline" | "outlineDark" | "tertiary" | "tertiaryDark";
+type ButtonStyles = "default" | "dark" | "secondary" | "outline" | "outlineDark" | "thirdy" | "thirdyDark";
 
 // Define base styles and variants for the button component
 const buttonStyles = {
@@ -22,12 +22,12 @@ const buttonStyles = {
     ),
     variants: {
         default: "bg-aquahaze text-shark hover:bg-solitude active:bg-orient focus:bg-bg-aquahaze",
-        dark: "bg-orient text-shark hover:bg-bluewhale hover:text-white active:bg-bluewhale active:text-white focus:bg-bg-bluewhale",
-        secondary: "bg-white text-shark hover:bg-aquahaze hover:text-shark active:bg-aquahaze active:text-white focus:bg-#EBF2F5 bg-#0A5479",
-        outline: "bg-mercury text-shark hover:bg-orient active:bg-orient active:text-white focus:bg-bg-orient",
-        outlineDark: "bg-orient text-shark hover:bg-mercury active:bg-orient active:text-white focus:bg-bg-orient",
-        tertiary: "w-[140px] h-[20px] text-shark hover:bg- active:bg- active:text- focus:bg-bg-orient",
-        tertiaryDark: "bg- text- hover:bg- active:bg- active:text- focus:bg-bg-"
+        dark: "bg-orient text-white hover:bg-bluewhale focus-visible:bg-bluewhale active:bg-bluewhale",
+        secondary: "bg-white text-shark hover:bg-aquahaze focus-visible:bg-aquahaze active:bg-aquahaze",
+        outline: "border border-mercury text-shark hover:border-orient focus-visible:bg-aquahaze active:bg-orient active:border-orient text-orient",
+        outlineDark: "border border-orient text-shark hover:border-mercury focus-visible:bg-aquahaze active:bg-orient active:border-orient active:text-white",
+        thirdy: "p-none gap-x-2.5 text-shark hover:text-matisse active:text-bluewhale font-bold",
+        thirdyDark: "p-none gap-x-2.5 text-white hover:text-solitude active:text-matisse font-bold"
     },
     defaultVariant: "default" as ButtonStyles
 };
