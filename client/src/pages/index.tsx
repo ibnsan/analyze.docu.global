@@ -5,9 +5,24 @@ import DefaultLayout from '@/components/layouts/default';
 import cx from '@/utils/cx';
 import Button from '@/components/ui/Button';
 import ChevronLeftSvg from "@/assets/icons/chevron-left.svg"
+import React, { InputHTMLAttributes, useState } from "react";
 
 
 const Page: NextPageWithLayout = () => {
+
+  const [inputValue, setInputValue] = useState(""); 
+  const handleGoClick = () => {console.log("Hello")};
+  const [error, setError] = useState("");
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    setInputValue(value);
+
+    if (!/^\d+$/.test(value)) {
+      setError('Введите только числа'); // Установка сообщения об ошибке
+    } else {
+      setError(''); // Сброс сообщения об ошибке, если введено число
+    }
+  };
 
   return (
     <>
@@ -27,7 +42,23 @@ const Page: NextPageWithLayout = () => {
             <ChevronLeftSvg className={cx('w-5 h-5')} />
             Button
           </Button>
+        
 
+        </div>
+        <div className="my-4">
+        <input 
+        type="text" 
+        className="input-in" 
+        onChange={(e) => setInputValue(e.target.value)}
+        style={{ backgroundColor: 'gray' }}
+         />
+            <p style={{ color: 'red' }}>{error}</p>
+        <Button
+         className='w-10 h-7 go-button' 
+         style={{backgroundColor: 'lightblue'}}
+         onClick={handleGoClick}>
+        Go
+        </Button>
         </div>
       </main>
     </>
